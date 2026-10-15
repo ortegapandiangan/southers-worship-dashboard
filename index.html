@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Southers Worship Lyrics Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Library Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- JavaScript milik website kita -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">♪</span>
+      <span>Southers Worship Songs Lyrics</span>
+    </a>
+    <span class="topbar-label">GKKD SOUTHERS SONG LIBRARY</span>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <p class="eyebrow">SONG LIBRARY</p>
+      <h1>Southers Worship Dashboard</h1>
+      <p>Created for services purpose</p>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span class="stat-icon">♫</span>
+        <p>Total Lagu</p>
+        <h2 id="totalSongs">0</h2>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon">▦</span>
+        <p>Kategori</p>
+        <h2 id="totalCategories">0</h2>
+      </article>
+    </section>
+
+
+<!-- Area login admin -->
+<div class="admin-area">
+  <button type="button" id="adminLoginButton">
+    Login Admin
+  </button>
+
+  <form id="adminLoginForm" hidden>
+    <h3>Login Admin</h3>
+
+    <label for="adminEmail">Email</label>
+    <input
+      id="adminEmail"
+      type="email"
+      autocomplete="username"
+      required
+      placeholder="Email admin"
+    >
+
+    <label for="adminPassword">Password</label>
+    <input
+      id="adminPassword"
+      type="password"
+      autocomplete="current-password"
+      required
+      placeholder="Password admin"
+    >
+
+    <div class="form-actions">
+      <button type="button" id="cancelAdminLogin">
+        Batal
+      </button>
+      <button type="submit">
+        Login
+      </button>
+    </div>
+
+    <p id="adminLoginStatus" aria-live="polite"></p>
+  </form>
+
+  <div id="adminLoggedIn" hidden>
+    <p>Login sebagai admin</p>
+    <button type="button" id="adminLogoutButton">
+      Logout
+    </button>
+  </div>
+</div>
+
+
+<div class="section-heading">
+  <div>
+    <h2>Koleksi Lagu</h2>
+    <p>Cari dan buka lirik lagu pilihanmu.</p>
+  </div>
+
+  <button id="addSongButton" class="add-button">
+    + Tambah Lagu
+  </button>
+</div>
+
+<form id="songForm" class="song-form" hidden>
+  <h3>Tambah Lagu Baru</h3>
+
+  <label for="songTitle">Judul Lagu</label>
+  <input id="songTitle" type="text" required
+         placeholder="Contoh: Amazing Grace">
+
+  <label for="songArtist">Penyanyi / Pencipta</label>
+  <input id="songArtist" type="text"
+         placeholder="Nama penyanyi atau pencipta">
+
+  <label for="songCategory">Kategori</label>
+  <select id="songCategory" required>
+    <option value="Praise">Praise</option>
+    <option value="Worship">Worship</option>
+    <option value="Christmas">Christmas</option>
+    <option value="Hymn">Hymn</option>
+  </select>
+
+  <label for="songLyrics">Lirik Lagu</label>
+  <textarea id="songLyrics" required rows="8"
+    placeholder="Pisahkan bagian lagu dengan penanda, misalnya:
+Verse 1:
+Tulis lirik di sini
+
+Chorus:
+Tulis lirik di sini"></textarea>
+
+  <div class="form-actions">
+    <button type="button" id="cancelAddSong"
+            class="cancel-button">Batal</button>
+    <button type="submit" class="add-button">
+      Simpan Lagu
+    </button>
+  </div>
+</form>
+
+
+      <div class="filters">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Cari judul lagu..."
+          aria-label="Cari judul lagu"
+        >
+        <select id="categoryFilter" aria-label="Filter kategori">
+          <option value="all">Semua kategori</option>
+        </select>
+      </div>
+      
+      <p id="songLoading" role="status" hidden>
+        Memuat daftar lagu...
+      </p>
+      
+      <div id="songList" class="song-list"></div>
+      <p id="emptyMessage" class="empty" hidden>
+        Lagu tidak ditemukan. Coba kata kunci lain.
+      </p>
+    </section>
+
+    
+    <section id="lyricsPanel" class="lyrics-panel" hidden>
+      <button id="closeLyrics" class="close-button">
+        ← Kembali ke koleksi
+      </button>
+
+      <div class="lyrics-header">
+        <div>
+          <p id="lyricsCategory" class="eyebrow"></p>
+          <h2 id="lyricsTitle"></h2>
+          <p id="lyricsArtist" class="muted"></p>
+        </div>
+      </div>
+
+      <div class="lyrics-toolbar">
+        <button type="button" id="decreaseFont" class="tool-button">
+          A−
+        </button>
+
+        <span id="fontSizeLabel">18 px</span>
+
+        <button type="button" id="increaseFont" class="tool-button">
+          A+
+        </button>
+
+        <button type="button" id="copyLyrics" class="tool-button">
+          Salin Lirik
+        </button>
+      </div>
+
+      <div id="lyricsContent" class="lyrics-content"></div>
+      <p id="copyStatus" class="copy-status" aria-live="polite"></p>
+    </section>
+
+
+    <footer>
+      Worship Lyrics Dashboard · Dibuat untuk pelayanan
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,557 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #397653;
+  --green-light: #edf4ef;
+  --text: #202923;
+  --muted: #758078;
+  --border: #e5eae6;
+  --background: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 7%;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 25px;
+}
+
+.topbar-label,
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.container {
+  max-width: 1000px;
+  width: 86%;
+  margin: 42px auto;
+}
+
+.welcome {
+  background: #f5f8f5;
+  border-radius: 18px;
+  padding: 34px;
+  margin-bottom: 24px;
+}
+
+.welcome h1 {
+  font-size: clamp(28px, 5vw, 40px);
+  line-height: 1.2;
+  margin: 8px 0;
+}
+
+.welcome p:last-child,
+.section-heading p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 38px;
+}
+
+.stat-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.stat-icon {
+  color: var(--green);
+  font-size: 25px;
+}
+
+.stat-card p {
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+.stat-card h2 {
+  font-size: 30px;
+  margin: 0;
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+}
+
+.section-heading p {
+  margin-top: 4px;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+input,
+select {
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  color: var(--text);
+  font: inherit;
+}
+
+input {
+  flex: 1;
+}
+
+select {
+  max-width: 200px;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #b7d6c1;
+  border-color: var(--green);
+}
+
+.song-list {
+  display: grid;
+  gap: 12px;
+}
+
+.song-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.song-card:hover {
+  border-color: #a5c5ae;
+  background: #fbfdfb;
+}
+
+.song-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 23px;
+}
+
+.song-info {
+  flex: 1;
+}
+
+.song-info strong {
+  display: block;
+}
+
+.song-info span,
+.song-arrow,
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.song-arrow {
+  font-size: 22px;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 24px;
+}
+
+.lyrics-panel {
+  margin-top: 36px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fcfdfc;
+}
+
+.lyrics-panel h2 {
+  font-size: 30px;
+  margin: 6px 0;
+}
+
+.close-button {
+  border: none;
+  background: none;
+  color: var(--green);
+  font: inherit;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 20px;
+}
+
+.lyrics-content {
+  margin-top: 24px;
+  white-space: pre-line;
+  line-height: 1.9;
+}
+
+.lyrics-content h3 {
+  font-size: 14px;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 16px 5%;
+  }
+
+  .topbar-label {
+    display: none;
+  }
+
+  .container {
+    width: 90%;
+    margin-top: 24px;
+  }
+
+  .welcome {
+    padding: 24px;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  select {
+    max-width: none;
+  }
+
+  .lyrics-panel {
+    padding: 20px;
+  }
+}
+
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.add-button,
+.cancel-button {
+  padding: 11px 16px;
+  border-radius: 9px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.add-button {
+  border: 1px solid var(--green);
+  background: var(--green);
+  color: white;
+}
+
+.add-button:hover {
+  background: #2d6041;
+}
+
+.cancel-button {
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text);
+}
+
+.song-form {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fcfdfc;
+}
+
+.song-form h3 {
+  margin: 0 0 8px;
+}
+
+.song-form label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.song-form input,
+.song-form select,
+.song-form textarea {
+  width: 100%;
+  max-width: none;
+}
+
+.song-form textarea {
+  resize: vertical;
+  font: inherit;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/*EDIT DAN HAPUS LAGU*/
+
+
+.song-card {
+  flex-wrap: wrap;
+}
+
+.action-button {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  color: var(--green);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background: var(--green-light);
+}
+
+.delete-button {
+  color: #b42318;
+}
+
+.delete-button:hover {
+  background: #fff1f0;
+}
+
+@media (max-width: 600px) {
+  .action-button {
+    flex: 1;
+  }
+}
+
+/*Mempercantik halaman detail lirik*/
+
+
+.lyrics-panel {
+  margin-top: 36px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.lyrics-header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.lyrics-panel h2 {
+  margin: 6px 0;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.3;
+}
+
+.lyrics-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.tool-button {
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #ffffff;
+  color: var(--green);
+  font: inherit;
+  cursor: pointer;
+}
+
+.tool-button:hover {
+  background: var(--green-light);
+}
+
+#fontSizeLabel {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.lyrics-content {
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.lyric-section {
+  margin: 24px 0;
+}
+
+.lyric-section h3 {
+  margin-bottom: 8px;
+  color: var(--green);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.lyric-section p {
+  margin-top: 0;
+  white-space: pre-line;
+}
+
+.copy-status {
+  min-height: 24px;
+  color: var(--green);
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .lyrics-panel {
+    padding: 20px;
+  }
+
+  .lyrics-toolbar {
+    gap: 8px;
+  }
+}
+
+/*Merapihkan tampilan lirik*/
+
+/* Tampilan detail lirik */
+#lyricsPanel {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Judul lagu */
+#lyricsTitle {
+  margin-bottom: 8px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* Informasi artis dan kategori */
+#lyricsArtist,
+#lyricsCategory {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Pemisah bagian lirik */
+.lyric-section {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Judul Verse, Chorus, Bridge, dan lainnya */
+.lyric-section h3 {
+  margin-bottom: 12px;
+  color: #334155;
+  font-size: 1rem;
+}
+
+/* Isi lirik */
+.lyric-section p {
+  margin: 0;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #1f2937;
+}
+
+/* Tampilan layar kecil */
+@media (max-width: 600px) {
+  #lyricsPanel {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .lyric-section {
+    margin-top: 20px;
+    padding-top: 14px;
+  }
+}
+
+
+
