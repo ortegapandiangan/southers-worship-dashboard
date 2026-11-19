@@ -177,6 +177,10 @@ select:focus {
   transform: translateY(-2px);
 }
 
+.song-card:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
 
 .song-icon {
   display: grid;
