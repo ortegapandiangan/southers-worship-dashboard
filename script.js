@@ -315,6 +315,8 @@ songForm.addEventListener("submit", async (event) => {
   const title = document.getElementById("songTitle").value.trim();
   const artist = document.getElementById("songArtist").value.trim();
   const category = document.getElementById("songCategory").value;
+  const keyCenter = document.getElementById("songKeyCenter").value;
+  const youtubeUrl = document.getElementById("songYoutube").value.trim();
   const lyricsText = document.getElementById("songLyrics").value.trim();
 
   if (!title || !lyricsText) {
@@ -345,6 +347,8 @@ songForm.addEventListener("submit", async (event) => {
     title,
     artist: artist || "Tidak dicantumkan",
     category,
+    key_center: keyCenter || null,
+    youtube_url: youtubeUrl || null,
     sections
   };
 
@@ -407,6 +411,10 @@ function editSong(id) {
   document.getElementById("songTitle").value = song.title;
   document.getElementById("songArtist").value = song.artist;
   document.getElementById("songCategory").value = song.category;
+  document.getElementById("songKeyCenter").value =
+    song.key_center || "";
+  document.getElementById("songYoutube").value =
+    song.youtube_url || "";
 
   document.getElementById("songLyrics").value =
     song.sections.map(section =>
