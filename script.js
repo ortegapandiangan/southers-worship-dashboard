@@ -237,6 +237,9 @@ function showLyrics(id) {
   document.getElementById("lyricsArtist").textContent =
     song.artist || "Artis tidak dicantumkan";
 
+  document.getElementById("lyricsKeyCenter").textContent =
+    song.key_center ? "Key: " + song.key_center : "";
+
   const content = document.getElementById("lyricsContent");
   content.replaceChildren();
 
