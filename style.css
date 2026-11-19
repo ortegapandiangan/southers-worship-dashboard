@@ -182,6 +182,13 @@ select:focus {
   outline-offset: 3px;
 }
 
+@media (max-width: 600px) {
+  .song-card {
+    padding: 12px;
+    gap: 10px;
+  }
+}
+
 .song-icon {
   display: grid;
   place-items: center;
